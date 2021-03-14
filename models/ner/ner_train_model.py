@@ -22,8 +22,8 @@ def read_file(file_name):
                 this_sent.append(tuple(l.split()))
     return sents
 
-p = Preprocess(word2index_dic='../../train_tools/dict/chatbot_dict.bin',
-               userdic='../../utils/user_dic.tsv')
+
+p = Preprocess(word2index_dic='../../train_tools/dict/chatbot_dict.bin', userdic='../../utils/user_dic.tsv')
 
 corpus = read_file('ner_train.txt')
 
@@ -63,7 +63,7 @@ max_len = 40
 x_train = preprocessing.sequence.pad_sequences(x_train, padding='post', maxlen=max_len)
 y_train = preprocessing.sequence.pad_sequences(y_train, padding='post', maxlen=max_len)
 
-x_train, x_test, y_train, y_test = train_test_split(x_train, y_train, test_size=2, random_state=1234)
+x_train, x_test, y_train, y_test = train_test_split(x_train, y_train, test_size=.2, random_state=1234)
 
 y_train = tf.keras.utils.to_categorical(y_train, num_classes=tag_size)
 y_test = tf.keras.utils.to_categorical(y_test, num_classes=tag_size)
