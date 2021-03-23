@@ -70,8 +70,8 @@ concat = concatenate([pool1, pool2, pool3])
 
 hidden = Dense(128, activation=tf.nn.relu)(concat)
 dropout_hidden = Dropout(rate=dropout_prob)(hidden)
-logits = Dense(5, name='logits')(dropout_hidden)
-predictions = Dense(5, activation=tf.nn.softmax)(logits)
+logits = Dense(359, name='logits')(dropout_hidden)
+predictions = Dense(359, activation=tf.nn.softmax)(logits)
 
 model = Model(inputs=input_layer, outputs=predictions)
 model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=(['accuracy']))
