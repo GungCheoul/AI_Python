@@ -32,13 +32,13 @@ train_size = int(len(padded_seqs) * 0.7)
 val_size = int(len(padded_seqs) * 0.2)
 test_size = int(len(padded_seqs) * 0.1)
 
-train_ds = ds.take(train_size).batch(20)
-val_ds = ds.skip(train_size).take(val_size).batch(20)
-test_ds = ds.skip(train_size + val_size).take(test_size).batch(20)
+train_ds = ds.take(train_size).batch(32)
+val_ds = ds.skip(train_size).take(val_size).batch(32)
+test_ds = ds.skip(train_size + val_size).take(test_size).batch(32)
 
 dropout_prob = 0.5
 EMB_SIZE = 128
-EPOCH = 5
+EPOCH = 100
 VOCAB_SIZE = len(p.word_index) + 1
 
 input_layer = Input(shape=(MAX_SEQ_LEN,))
